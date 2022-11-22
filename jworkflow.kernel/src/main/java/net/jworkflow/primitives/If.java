@@ -1,5 +1,8 @@
 package net.jworkflow.primitives;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.jworkflow.kernel.exceptions.CorruptPersistenceDataException;
 import net.jworkflow.kernel.interfaces.StepBody;
 import net.jworkflow.kernel.models.ControlStepData;
@@ -15,7 +18,7 @@ public class If implements StepBody {
         
         if (context.getPersistenceData() == null) {
             if (condition) {
-                Object[] defaultList = new Object[]{null};
+                List<Object> defaultList = new ArrayList<>();
                 return ExecutionResult.branch(defaultList, new ControlStepData(true));
             }
             else

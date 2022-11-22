@@ -1,10 +1,10 @@
 package net.jworkflow.kernel.builders;
-import net.jworkflow.kernel.builders.DefaultWorkflowBuilder;
-import net.jworkflow.kernel.models.WorkflowDefinition;
-import net.jworkflow.kernel.models.WorkflowStep;
 import java.util.ArrayList;
 import java.util.List;
+
 import net.jworkflow.kernel.interfaces.WorkflowBuilder;
+import net.jworkflow.kernel.models.WorkflowDefinition;
+import net.jworkflow.kernel.models.WorkflowStep;
 
 public class BaseWorkflowBuilder {
     

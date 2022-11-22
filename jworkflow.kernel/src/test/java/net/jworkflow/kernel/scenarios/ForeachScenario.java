@@ -1,14 +1,19 @@
 package net.jworkflow.kernel.scenarios;
 
+import static org.junit.Assert.assertEquals;
+
+import java.util.Arrays;
+import java.util.List;
+
+import org.junit.Test;
+
 import net.jworkflow.kernel.interfaces.StepBody;
 import net.jworkflow.kernel.interfaces.Workflow;
+import net.jworkflow.kernel.interfaces.WorkflowBuilder;
 import net.jworkflow.kernel.models.ExecutionResult;
 import net.jworkflow.kernel.models.StepExecutionContext;
 import net.jworkflow.kernel.models.WorkflowInstance;
 import net.jworkflow.kernel.models.WorkflowStatus;
-import org.junit.Test;
-import static org.junit.Assert.assertEquals;
-import net.jworkflow.kernel.interfaces.WorkflowBuilder;
 
 public class ForeachScenario extends Scenario{
     
@@ -18,7 +23,7 @@ public class ForeachScenario extends Scenario{
     private static int checkSum = 0;
     
     public class MyData {
-        public Object[] value1;
+        public List<Object> value1;
     }
     
     static class DoSomething implements StepBody {
@@ -68,10 +73,7 @@ public class ForeachScenario extends Scenario{
     @Test
     public void test() throws Exception {
         MyData data = new MyData();
-        data.value1 = new Object[3];
-        data.value1[0] = 2;
-        data.value1[1] = 3;
-        data.value1[2] = 2;
+        data.value1 = Arrays.asList(2, 3, 2);
         WorkflowInstance result = runWorkflow(new ScenarioWorkflow(), data);
         
         assertEquals(WorkflowStatus.COMPLETE, result.getStatus());

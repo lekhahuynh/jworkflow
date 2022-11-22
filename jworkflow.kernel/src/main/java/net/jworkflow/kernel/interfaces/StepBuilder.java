@@ -10,6 +10,7 @@ import net.jworkflow.primitives.Foreach;
 import net.jworkflow.primitives.ConsumerStep;
 import java.time.Duration;
 import java.util.Date;
+import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import net.jworkflow.kernel.models.ErrorBehavior;
@@ -133,7 +134,7 @@ public interface StepBuilder<TData, TStep extends StepBody> {
      * The function that is evaluated to return the collection when the workflow reaches this point
      * @return 
      */
-    ControlStepBuilder<TData, Foreach> foreach(Function<TData, Object[]> collection);
+    ControlStepBuilder<TData, Foreach> foreach(Function<TData, List<Object>> collection);
     
     /**
      * Start a while loop that evaluates the given expression on each iteration

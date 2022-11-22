@@ -1,10 +1,10 @@
 package net.jworkflow.definitionstorage.models;
 
 import java.time.Duration;
-import java.util.List;
 import java.util.ArrayList;
-import java.util.Dictionary;
+import java.util.List;
 import java.util.Properties;
+
 import net.jworkflow.kernel.models.ErrorBehavior;
 
 public class StepSource {

@@ -1,6 +1,7 @@
 package net.jworkflow.primitives;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+
 import net.jworkflow.kernel.interfaces.StepBody;
 import net.jworkflow.kernel.models.ControlStepData;
 import net.jworkflow.kernel.models.ExecutionResult;
@@ -12,7 +13,7 @@ public class Sequence implements StepBody {
     public ExecutionResult run(StepExecutionContext context) {
         
         if (context.getPersistenceData() == null) {
-            return ExecutionResult.branch(new Object[1], new ControlStepData(true));
+            return ExecutionResult.branch(new ArrayList<>(1), new ControlStepData(true));
         }
 
         if (context.getPersistenceData() instanceof ControlStepData) {

@@ -1,6 +1,8 @@
 package net.jworkflow.primitives;
 
 import java.time.Duration;
+import java.util.ArrayList;
+
 import net.jworkflow.kernel.interfaces.StepBody;
 import net.jworkflow.kernel.models.ExecutionResult;
 import net.jworkflow.kernel.models.StepExecutionContext;
@@ -19,7 +21,7 @@ public class Recur implements StepBody {
         ExecutionResult result = new ExecutionResult();
         result.setProceed(false);
         result.setSleepFor(interval);
-        result.setBranches(new Object[1]);
+        result.setBranches(new ArrayList<>(1));
         
         return result;
     }

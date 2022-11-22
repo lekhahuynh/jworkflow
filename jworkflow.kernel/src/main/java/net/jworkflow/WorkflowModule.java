@@ -51,7 +51,9 @@ public class WorkflowModule extends AbstractModule {
       bind(ExecutionResultProcessor.class).to(DefaultExecutionResultProcessor.class);
       bind(DefinitionLoader.class).to(DefaultDefinitionLoader.class);
       bind(Clock.class).toInstance(Clock.systemUTC());
-      bind(ScriptEngine.class).toInstance(new ScriptEngineManager().getEngineByName("nashorn"));
+//      bind(ScriptEngine.class).toInstance(new ScriptEngineManager().getEngineByName("nashorn"));
+//      Fix for running with JDK8 and Apache Karaf.
+      bind(ScriptEngine.class).toInstance(new ScriptEngineManager(null).getEngineByName("nashorn"));
       
       Multibinder<BackgroundService> backgroundServiceBinder = Multibinder.newSetBinder(binder(), BackgroundService.class);
       backgroundServiceBinder.addBinding().to(WorkflowWorker.class);

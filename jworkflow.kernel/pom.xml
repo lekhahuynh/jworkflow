@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.jworkflow</groupId>
     <artifactId>jworkflow</artifactId>
-    <version>1.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
     
     <name>jworkflow</name>
@@ -21,6 +21,10 @@
         <developer>
           <name>Daniel Gerlag</name>
           <email>daniel@gerlag.ca</email>
+        </developer>
+        <developer>
+          <name>Le Kha Huynh</name>
+          <email>lekhahuynh09@gmail.com</email>
         </developer>
     </developers>
 
@@ -40,7 +44,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.13.1</version>
+            <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -51,7 +55,7 @@
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>2.8.5</version>
+            <version>2.8.9</version>
         </dependency>
     </dependencies>
     <properties>

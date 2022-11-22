@@ -155,7 +155,7 @@ public class DefaultStepBuilder<TData, TStep extends StepBody> implements StepBu
     }
     
     @Override
-    public ControlStepBuilder<TData, Foreach> foreach(Function<TData, Object[]> collection) {
+    public ControlStepBuilder<TData, Foreach> foreach(Function<TData, List<Object>> collection) {
         WorkflowStep newStep = new WorkflowStep(Foreach.class);
         StepFieldConsumer<Foreach, TData> collectionConsumer = (step, data) -> step.collection = collection.apply(data);                
         newStep.addInput(collectionConsumer);
