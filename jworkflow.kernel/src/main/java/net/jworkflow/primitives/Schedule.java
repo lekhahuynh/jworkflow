@@ -1,6 +1,8 @@
 package net.jworkflow.primitives;
 
 import java.time.Duration;
+import java.util.ArrayList;
+
 import net.jworkflow.kernel.exceptions.CorruptPersistenceDataException;
 import net.jworkflow.kernel.interfaces.StepBody;
 import net.jworkflow.kernel.models.ExecutionResult;
@@ -22,7 +24,7 @@ public class Schedule implements StepBody {
             ScheduleStepData persistenceData = (ScheduleStepData)context.getPersistenceData();                               
 
             if (!persistenceData.elapsed) {
-                return ExecutionResult.branch(new Object[1], new ScheduleStepData(true));
+                return ExecutionResult.branch(new ArrayList<>(1), new ScheduleStepData(true));
             }
             
             if (context.getWorkflow().isBranchComplete(context.getExecutionPointer().id))

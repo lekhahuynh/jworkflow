@@ -1,22 +1,42 @@
 package net.jworkflow.kernel.services.test;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.logging.Logger;
-import net.jworkflow.kernel.interfaces.*;
-import net.jworkflow.kernel.models.*;
-import net.jworkflow.kernel.services.DefaultExecutionResultProcessor;
-import static org.junit.Assert.*;
-import org.junit.Test;
+
 import org.junit.Before;
-import static org.mockito.Mockito.*;
+import org.junit.Test;
+
+import net.jworkflow.kernel.interfaces.ExecutionPointerFactory;
+import net.jworkflow.kernel.interfaces.ExecutionResultProcessor;
+import net.jworkflow.kernel.interfaces.StepErrorHandler;
+import net.jworkflow.kernel.models.ExecutionPointer;
+import net.jworkflow.kernel.models.ExecutionResult;
+import net.jworkflow.kernel.models.PointerStatus;
+import net.jworkflow.kernel.models.StepOutcome;
+import net.jworkflow.kernel.models.WorkflowDefinition;
+import net.jworkflow.kernel.models.WorkflowExecutorResult;
+import net.jworkflow.kernel.models.WorkflowInstance;
+import net.jworkflow.kernel.models.WorkflowStatus;
+import net.jworkflow.kernel.models.WorkflowStep;
+import net.jworkflow.kernel.services.DefaultExecutionResultProcessor;
 
 public class ExecutionResultProcessorTest {
     
@@ -195,8 +215,7 @@ public class ExecutionResultProcessorTest {
         WorkflowStep step = mock(WorkflowStep.class);
         WorkflowExecutorResult workflowResult = new WorkflowExecutorResult();
         WorkflowInstance instance = givenWorkflow(pointer);
-        Object[] branchArray = new Object[1];
-        branchArray[0] = branch;
+        List<Object> branchArray = Arrays.asList(branch);
         ExecutionResult result = ExecutionResult.branch(branchArray, null);
         Collection<Integer> childList = new ArrayList<>();
         childList.add(child);
